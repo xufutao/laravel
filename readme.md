@@ -1,7 +1,7 @@
 laravel todo list
 ===
 
-> 数据库用sqlite就可以
+> 用你最熟悉的方式实现下面的需求
 
 1. fork 本项目
 2. 实现用户登录/注册
