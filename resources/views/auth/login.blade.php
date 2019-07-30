@@ -15,11 +15,11 @@
                             <label for="account" class="col-sm-4 col-form-label text-md-right">{{ __('邮箱') . '/' . __('用户名') }}</label>
 
                             <div class="col-md-6">
-                                <input id="account" class="form-control{{ $errors->has('account') ? ' is-invalid' : '' }}" name="account" value="{{ old('account') }}" required autofocus>
+                                <input id="account" class="form-control{{ $errors->has('email') ||$errors->has('name') ? ' is-invalid' : '' }}" name="account" value="{{ old('account') }}" required autofocus>
 
-                                @if ($errors->has('account'))
+                                @if ($errors->has('email') || $errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('account') }}</strong>
+                                        <strong>{{ $errors->first() }}</strong>
                                     </span>
                                 @endif
                             </div>

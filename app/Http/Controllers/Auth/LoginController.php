@@ -47,11 +47,27 @@ class LoginController extends Controller
 
         $map = [
             'email' => filter_var($username, FILTER_VALIDATE_EMAIL),
-            'name' =>$username,
         ]; 
-        $field=key(array_filter($map)) ?? 'username';
+        $field=key(array_filter($map)) ?? 'name';
         request()->merge([$field => $username]);
         return $field;
+    }
+
+    /**
+     * Validate the user login request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    protected function validateLogin(Request $request)
+    {
+        $this->username();//目的是为了把合并的字段验证
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ]);
     }
 
 }
